@@ -44,14 +44,19 @@ prompt(
 
 ## Props
 
- name                 | description                                 | type     | default
-:-------------------- |:------------------------------------------- | --------:|:------------------
- type                 | Text input type: `'numeric', 'secure-text', 'phone-pad', 'email-address'`  |   String | 'default'
- cancelable           |                                             |  Boolean |
- defaultValue         | Default input value                         |   String | ''
- placeholder          |                                             |   String | ''
+| name                | description                                                               | type    | default                              |
+|---------------------|---------------------------------------------------------------------------|---------|--------------------------------------|
+| type                | Text input type: `'numeric', 'secure-text', 'phone-pad', 'email-address'` | String  | 'default'                            |
+| cancelable          |                                                                           | Boolean | true                                 |
+| defaultValue        | Default input value                                                       | String  |                                      |
+| placeholder         |                                                                           | String  |                                      |
+| style               | `'default', 'shimo'`                                                      | String  | 'default'                            |
+| disableFullScreenUI | When in landscape mode, don't use fullscreen                              | Boolean | false                                |
+| highlightColor      | Color of text selection                                                   | String  | colorString or #RRGGBB or ##AARRGGBB |
+| placeholderColor    | Color of the placeholder                                                  | String  | colorString or#RRGGBB or ##AARRGGBB  |
+| color               | Color of the text                                                         | String  | colorString or#RRGGBB or ##AARRGGBB  |
 
-
+Valid `colorString`: `'red', 'blue', 'green', 'black', 'white', 'gray', 'cyan', 'magenta', 'yellow', 'lightgray', 'darkgray', 'grey', 'lightgrey', 'darkgrey', 'aqua', 'fuchsia', 'lime', 'maroon', 'navy', 'olive', 'purple', 'silver', and 'teal'`
 
 ![Android Screen Shoot](./Example/android.png)
 
