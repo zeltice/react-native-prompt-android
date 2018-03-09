@@ -31,8 +31,11 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
     /* package */ static final String ARG_DISABLE_FULL_SCREEN_UI = "disableFullscreenUI";
     /* package */ static final String ARG_HIGHLIGHT_COLOR = "highlightColor";
     /* package */ static final String ARG_COLOR = "color";
+    /* package */ static final String ARG_BUTTON_COLOR = "buttonColor";
 
     private EditText mInputText;
+
+    private String mButtonColor;
 
     public enum PromptTypes {
         TYPE_DEFAULT("default"),
@@ -101,6 +104,12 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
             builder.setItems(arguments.getCharSequenceArray(ARG_ITEMS), this);
         }
 
+        if (arguments.containsKey(ARG_BUTTON_COLOR)) {
+            mButtonColor = arguments.getString(ARG_BUTTON_COLOR);
+        } else {
+            mButtonColor = "";
+        }
+
         AlertDialog alertDialog = builder.create();
 
         // input style
@@ -109,6 +118,9 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
         switch (style) {
             case "shimo":
                 input = (EditText) inflater.inflate(R.layout.edit_text, null);
+                break;
+            case "cust":
+                input = (EditText) inflater.inflate(R.layout.cust_edit_text, null);
                 break;
             default:
                 input = new EditText(activityContext);
@@ -196,6 +208,17 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
         Dialog dialog = this.createDialog(getActivity(), getArguments());
         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         return dialog;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        if (!mButtonColor.isEmpty()) {
+            AlertDialog d = (AlertDialog) getDialog();
+            d.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor(mButtonColor));
+            d.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor(mButtonColor));
+        }
     }
 
     @Override
