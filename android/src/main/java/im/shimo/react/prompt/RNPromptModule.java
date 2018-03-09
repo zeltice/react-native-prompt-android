@@ -46,6 +46,7 @@ public class RNPromptModule extends ReactContextBaseJavaModule implements Lifecy
     /* package */ static final String KEY_DISABLE_FULL_SCREEN_UI = "disableFullscreenUI";
     /* package */ static final String KEY_HIGHLIGHT_COLOR = "highlightColor";
     /* package */ static final String KEY_COLOR = "color";
+    /* package */ static final String KEY_BUTTON_COLOR = "buttonColor";
 
     /* package */ static final Map<String, Object> CONSTANTS = MapBuilder.<String, Object>of(
             ACTION_BUTTON_CLICKED, ACTION_BUTTON_CLICKED,
@@ -154,6 +155,9 @@ public class RNPromptModule extends ReactContextBaseJavaModule implements Lifecy
         }
         if (options.hasKey(KEY_PLACEHOLDER_COLOR)) {
             args.putString(KEY_PLACEHOLDER_COLOR, options.getString(KEY_PLACEHOLDER_COLOR));
+        }
+        if (options.hasKey(KEY_BUTTON_COLOR)) {
+            args.putString(KEY_BUTTON_COLOR, options.getString(KEY_BUTTON_COLOR));
         }
         fragmentManagerHelper.showNewAlert(mIsInForeground, args, callback);
     }
