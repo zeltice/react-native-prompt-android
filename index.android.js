@@ -135,7 +135,6 @@ export default function prompt(
         };
     }
 
-    console.log('config:', config);
     PromptAndroid.promptWithArgs(
         config,
         (action, buttonKey, input) => {
