@@ -12,6 +12,8 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.view.inputmethod.EditorInfo;
 import android.graphics.Color;
+import android.widget.TextView;
+import android.view.KeyEvent;
 
 import javax.annotation.Nullable;
 
@@ -110,7 +112,7 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
             mButtonColor = "";
         }
 
-        AlertDialog alertDialog = builder.create();
+        final AlertDialog alertDialog = builder.create();
 
         // input style
         LayoutInflater inflater = LayoutInflater.from(activityContext);
@@ -197,9 +199,17 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
         }
         alertDialog.setView(input, 50, 15, 50, 0);
 
-        // input.setLinkTextColor(Color.parseColor("green"));
-
         mInputText = input;
+
+        input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).performClick();
+                }
+                return false;
+            }
+        });
+
         return alertDialog;
     }
 
