@@ -90,10 +90,10 @@ The third argument is an object. It can have any of these keys:
 | placeholder         |                                                                                   | String  |                                                      |
 | style               | `'default', 'shimo', 'cust'`                                                      | String  | 'default'                                            |
 | disableFullScreenUI | When in landscape mode, don't use fullscreen                                      | Boolean | false                                                |
-| highlightColor      | Color of text selection                                                           | String  | ![colorString](#colorString) or #RRGGBB or #AARRGGBB |
-| placeholderColor    | Color of the placeholder                                                          | String  | ![colorString](#colorString) or #RRGGBB or #AARRGGBB |
-| color               | Color of the text                                                                 | String  | ![colorString](#colorString) or #RRGGBB or #AARRGGBB |
-| buttonColor         | Color of the buttons                                                              | String  | ![colorString](#colorString) or #RRGGBB or #AARRGGBB |
+| highlightColor      | Color of text selection                                                           | String  | ![colorString](#colorstring) or #RRGGBB or #AARRGGBB |
+| placeholderColor    | Color of the placeholder                                                          | String  | ![colorString](#colorstring) or #RRGGBB or #AARRGGBB |
+| color               | Color of the text                                                                 | String  | ![colorString](#colorstring) or #RRGGBB or #AARRGGBB |
+| buttonColor         | Color of the buttons                                                              | String  | ![colorString](#colorstring) or #RRGGBB or #AARRGGBB |
 
 ##### colorString
 Is one of the following: `'red', 'blue', 'green', 'black', 'white', 'gray', 'cyan', 'magenta', 'yellow', 'lightgray', 'darkgray', 'grey', 'lightgrey', 'darkgrey', 'aqua', 'fuchsia', 'lime', 'maroon', 'navy', 'olive', 'purple', 'silver', and 'teal'`
