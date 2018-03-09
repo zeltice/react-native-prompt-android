@@ -218,6 +218,7 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
             AlertDialog d = (AlertDialog) getDialog();
             d.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor(mButtonColor));
             d.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor(mButtonColor));
+            d.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(Color.parseColor(mButtonColor));
         }
     }
 
