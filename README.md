@@ -94,9 +94,10 @@ prompt(
 | color               | Color of the text                                                                 | String  | colorString or #RRGGBB or ##AARRGGBB  |
 | buttonColor         | Color of the buttons                                                              | String  | colorString or #RRGGBB or ##AARRGGBB  |
 
-Valid `colorString`: `'red', 'blue', 'green', 'black', 'white', 'gray', 'cyan', 'magenta', 'yellow', 'lightgray', 'darkgray', 'grey', 'lightgrey', 'darkgrey', 'aqua', 'fuchsia', 'lime', 'maroon', 'navy', 'olive', 'purple', 'silver', and 'teal'`
+#### colorString
+Is one of the following: `'red', 'blue', 'green', 'black', 'white', 'gray', 'cyan', 'magenta', 'yellow', 'lightgray', 'darkgray', 'grey', 'lightgrey', 'darkgrey', 'aqua', 'fuchsia', 'lime', 'maroon', 'navy', 'olive', 'purple', 'silver', and 'teal'`
 
-### "cust" Style (change underline, cursor, and handle color)
+#### "cust" Style (change underline, cursor, and handle color)
 If you set this style, you can adjust the color of the "underline", "cursor", and "handles" of the input field. The default custom color is a reddish color of "#F34336". You can change this by going to `./node_modules/react-native-prompt-android/android/src/main/res/values/colors.xml` and changing the value of the `custUnderlineAndCursorAndHandleColor` field.
 
 ![Android Screen Shoot](./Example/android.png)
