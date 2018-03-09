@@ -79,26 +79,29 @@ prompt(
 );
 ```
 
-## Props
+### Options
+The third argument is an object. It can have any of these keys:
 
-| Name                | Description                                                                       | Type    | Default                              |
-|---------------------|-----------------------------------------------------------------------------------|---------|--------------------------------------|
-| type                | Text input type: `'numeric', 'secure-text', 'phone-pad', 'email-address'`         | String  | 'default'                            |
-| cancelable          |                                                                                   | Boolean | true                                 |
-| defaultValue        | Default input value                                                               | String  |                                      |
-| placeholder         |                                                                                   | String  |                                      |
-| style               | `'default', 'shimo', 'cust'`                                                      | String  | 'default'                            |
-| disableFullScreenUI | When in landscape mode, don't use fullscreen                                      | Boolean | false                                |
-| highlightColor      | Color of text selection                                                           | String  | colorString or #RRGGBB or ##AARRGGBB |
-| placeholderColor    | Color of the placeholder                                                          | String  | colorString or #RRGGBB or ##AARRGGBB  |
-| color               | Color of the text                                                                 | String  | colorString or #RRGGBB or ##AARRGGBB  |
-| buttonColor         | Color of the buttons                                                              | String  | colorString or #RRGGBB or ##AARRGGBB  |
+| Key                 | Description                                                                       | Type    | Default                                              |
+|---------------------|-----------------------------------------------------------------------------------|---------|------------------------------------------------------|
+| type                | Text input type: `'numeric', 'secure-text', 'phone-pad', 'email-address'`         | String  | 'default'                                            |
+| cancelable          |                                                                                   | Boolean | true                                                 |
+| defaultValue        | Default input value                                                               | String  |                                                      |
+| placeholder         |                                                                                   | String  |                                                      |
+| style               | `'default', 'shimo', 'cust'`                                                      | String  | 'default'                                            |
+| disableFullScreenUI | When in landscape mode, don't use fullscreen                                      | Boolean | false                                                |
+| highlightColor      | Color of text selection                                                           | String  | ![colorString](#colorString) or #RRGGBB or #AARRGGBB |
+| placeholderColor    | Color of the placeholder                                                          | String  | ![colorString](#colorString) or #RRGGBB or #AARRGGBB |
+| color               | Color of the text                                                                 | String  | ![colorString](#colorString) or #RRGGBB or #AARRGGBB |
+| buttonColor         | Color of the buttons                                                              | String  | ![colorString](#colorString) or #RRGGBB or #AARRGGBB |
 
-#### colorString
+##### colorString
 Is one of the following: `'red', 'blue', 'green', 'black', 'white', 'gray', 'cyan', 'magenta', 'yellow', 'lightgray', 'darkgray', 'grey', 'lightgrey', 'darkgrey', 'aqua', 'fuchsia', 'lime', 'maroon', 'navy', 'olive', 'purple', 'silver', and 'teal'`
 
-#### "cust" Style (change underline, cursor, and handle color)
+##### "cust" Style (change underline, cursor, and handle color)
 If you set this style, you can adjust the color of the "underline", "cursor", and "handles" of the input field. The default custom color is a reddish color of "#F34336". You can change this by going to `./node_modules/react-native-prompt-android/android/src/main/res/values/colors.xml` and changing the value of the `custUnderlineAndCursorAndHandleColor` field.
+
+### Screenshots
 
 ![Android Screen Shoot](./Example/android.png)
 
