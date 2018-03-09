@@ -39,6 +39,10 @@ export type PromptStyle = $Enum<{
      * Shimo alert dialog style
      */
     'shimo': string,
+    /**
+     * Custom input style
+     */
+    'cust': string
 }>;
 
 type Options = {
@@ -51,6 +55,7 @@ type Options = {
     placeholderColor?: ?String;
     highlightColor?: ?String;
     color?: ?String;
+    buttonColor?: ?String;
 };
 
 /**
