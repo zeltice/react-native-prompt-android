@@ -17,10 +17,47 @@ You can use react-native-cli:
 react-native link react-native-prompt-android
 ```
 
-Or rnpm:
-```bash
-rnpm link react-native-prompt-android
+#### Manual Linking
+In case `react-native link` fails you can follow this manual linking.
+
+1. Include this module in `android/settings.gradle`:
+
 ```
+...
+include ':react-native-prompt-android' // Add this
+project(':react-native-prompt-android').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-prompt-android/android') // Add this
+...
+include ':app'
+```
+
+2. Add a dependency to your app build in `android/app/build.gradle`:
+
+```
+dependencies {
+   ...
+   compile project(':react-native-prompt-android') // Add this
+}
+```
+
+3. Change your main application to "import" and "add" a new package, in `android/app/src/main/.../MainApplication.java`:
+
+```java
+import im.shimo.react.prompt.RNPromptPackage; // Add new import
+
+public class MainApplication extends Application implements ReactApplication {
+  ...
+  
+  @Override
+  protected List<ReactPackage> getPackages() {
+    return Arrays.<ReactPackage>asList(
+      new MainReactPackage(),
+      new RNPromptPackage() // Add the package here
+    );
+  }
+}
+```
+
+4. Re-compile application using `react-native run-android`
 
 ### Usage
 
