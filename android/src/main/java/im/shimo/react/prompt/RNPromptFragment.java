@@ -1,19 +1,19 @@
 package im.shimo.react.prompt;
 
+import android.support.v7.app.AlertDialog;
+import android.os.Bundle;
+import android.graphics.Color;
+import android.content.Context;
 import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.text.InputType;
-import android.view.LayoutInflater;
-import android.view.WindowManager;
-import android.widget.EditText;
 import android.view.inputmethod.EditorInfo;
-import android.graphics.Color;
-import android.widget.TextView;
+import android.widget.EditText;
+import android.view.inputmethod.InputMethodManager;
+import android.text.InputType;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.widget.TextView;
 
 import javax.annotation.Nullable;
 
@@ -201,6 +201,17 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
 
         mInputText = input;
 
+        alertDialog.setOnShowListener(new DialogInterface.OnShowListener()
+        {
+            @Override
+            public void onShow(final DialogInterface dialog)
+            {
+                input.requestFocus();
+                ((InputMethodManager) alertDialog.getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(input, 0);
+            }
+        });
+
+
         input.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -216,7 +227,6 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = this.createDialog(getActivity(), getArguments());
-        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         return dialog;
     }
 
