@@ -106,3 +106,22 @@ If you set this style, you can adjust the color of the "underline", "cursor", an
 ![Android Screen Shoot](./Example/android.png)
 
 ![Android Screen Shoot](./Example/ios.png)
+
+#### Android with options
+
+    prompt('Edit Memo', undefined,
+        [
+            { text:'Cancel', style:'cancel' },
+            { text:'OK', onPress: text => dispatch(patchEvent(id, { memo:text })) },
+        ],
+        {
+            highlightColor: '#80F34336',
+            color: '#212121',
+            buttonColor: '#000000',
+            defaultValue: memo,
+            style: 'cust'
+        }
+    )
+
+
+![Android Screen Shoot](./Example/android-options.png)
