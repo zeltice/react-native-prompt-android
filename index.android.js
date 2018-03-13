@@ -1,7 +1,8 @@
-import {
-    NativeModules
-} from 'react-native';
+import { NativeModules } from 'react-native';
+import processColor from 'react-native/Libraries/StyleSheet/processColor';
+
 const PromptAndroid = NativeModules.PromptAndroid;
+
 
 export type PromptType = $Enum<{
     /**
@@ -103,16 +104,16 @@ export default function prompt(
     if (options) {
         config = {
             ...config,
-            highlightColor: options.highlightColor || null,
-            placeholderColor: options.placeholderColor || null,
-            color: options.color || null,
+            highlightColor: options.highlightColor ? processColor(options.highlightColor) : null,
+            placeholderColor: options.placeholderColor ? processColor(options.placeholderColor) : null,
+            color: options.color ? processColor(options.color) : null,
             disableFullscreenUI: options.disableFullscreenUI === true,
             cancelable: options.cancelable !== false,
             type: options.type || 'default',
             style: options.style || 'default',
             defaultValue: options.defaultValue || '',
             placeholder: options.placeholder || null,
-            buttonColor: options.buttonColor || null
+            buttonColor: options.buttonColor ? processColor(options.buttonColor) : null
         };
     }
     // At most three buttons (neutral, negative, positive). Ignore rest.
