@@ -123,5 +123,7 @@ If you set this style, you can adjust the color of the "underline", "cursor", an
         }
     )
 
+And to get the red colors, the field `custUnderlineAndCursorAndHandleColor` in `./node_modules/react-native-prompt-android/android/src/main/res/values/colors.xml` was updated to `#F34336`
+
 
 ![Android Screen Shoot](./Example/android-options.png)
