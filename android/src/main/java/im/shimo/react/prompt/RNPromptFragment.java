@@ -2,7 +2,6 @@ package im.shimo.react.prompt;
 
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
-import android.graphics.Color;
 import android.content.Context;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -162,7 +161,7 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
         if (arguments.containsKey(ARG_HIGHLIGHT_COLOR)) {
             String highlightColor = arguments.getString(ARG_HIGHLIGHT_COLOR);
             if (highlightColor != null) {
-                input.setHighlightColor(Color.parseColor(highlightColor));
+                input.setHighlightColor(highlightColor);
             }
         }
 
@@ -187,7 +186,7 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
         if (arguments.containsKey(ARG_COLOR)) {
             String color = arguments.getString(ARG_COLOR);
             if (color != null) {
-                input.setTextColor(Color.parseColor(color));
+                input.setTextColor(color);
             }
         }
 
@@ -196,7 +195,7 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
             if (arguments.containsKey(ARG_PLACEHOLDER_COLOR)) {
                 String placeholderColor = arguments.getString(ARG_PLACEHOLDER_COLOR);
                 if (placeholderColor != null) {
-                    input.setHintTextColor(Color.parseColor(arguments.getString(ARG_PLACEHOLDER_COLOR)));
+                    input.setHintTextColor(arguments.getString(ARG_PLACEHOLDER_COLOR));
                 }
             }
         }
@@ -239,9 +238,9 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
 
         if (mButtonColor != null && !mButtonColor.isEmpty()) {
             AlertDialog d = (AlertDialog) getDialog();
-            d.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor(mButtonColor));
-            d.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor(mButtonColor));
-            d.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(Color.parseColor(mButtonColor));
+            d.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(mButtonColor);
+            d.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(mButtonColor);
+            d.getButton(AlertDialog.BUTTON_NEUTRAL).setTextColor(mButtonColor);
         }
     }
 
