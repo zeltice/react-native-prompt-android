@@ -47,16 +47,16 @@ export type PromptStyle = $Enum<{
 }>;
 
 type Options = {
-    disableFullscreenUI?: ?boolean;
-    cancelable?: ?boolean;
-    type?: ?PromptType;
-    defaultValue?: ?String;
-    style?: ?PromptStyle;
-    placeholder?: ?String;
-    placeholderColor?: ?String;
-    highlightColor?: ?String;
-    color?: ?String;
-    buttonColor?: ?String;
+    disableFullscreenUI?: boolean;
+    cancelable?: boolean;
+    type?: PromptType;
+    defaultValue?: string;
+    style?: PromptStyle;
+    placeholder?: string;
+    placeholderColor?: string;
+    highlightColor?: string;
+    color?: string;
+    buttonColor?: string;
 };
 
 /**
@@ -69,11 +69,11 @@ type ButtonsArray = Array<{
     /**
      * Button label
      */
-        text?: string,
+    text?: string,
     /**
      * Callback function when button pressed
      */
-        onPress?: ?Function,
+    onPress?: () => void,
 }>;
 
 export default function prompt(
@@ -104,16 +104,16 @@ export default function prompt(
     if (options) {
         config = {
             ...config,
-            highlightColor: options.highlightColor ? processColor(options.highlightColor) : null,
-            placeholderColor: options.placeholderColor ? processColor(options.placeholderColor) : null,
-            color: options.color ? processColor(options.color) : null,
+            highlightColor: options.highlightColor ? processColor(options.highlightColor) : options.highlightColor,
+            placeholderColor: options.placeholderColor ? processColor(options.placeholderColor) : options.placeholderColor,
+            color: options.color ? processColor(options.color) : options.color,
             disableFullscreenUI: options.disableFullscreenUI === true,
             cancelable: options.cancelable !== false,
             type: options.type || 'default',
             style: options.style || 'default',
             defaultValue: options.defaultValue || '',
             placeholder: options.placeholder || null,
-            buttonColor: options.buttonColor ? processColor(options.buttonColor) : null
+            buttonColor: options.buttonColor ? processColor(options.buttonColor) : options.buttonColor
         };
     }
     // At most three buttons (neutral, negative, positive). Ignore rest.

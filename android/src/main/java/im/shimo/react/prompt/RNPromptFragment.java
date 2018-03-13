@@ -36,7 +36,7 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
 
     private EditText mInputText;
 
-    private String mButtonColor;
+    private Integer mButtonColor;
 
     public enum PromptTypes {
         TYPE_DEFAULT("default"),
@@ -106,12 +106,7 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
         }
 
         if (arguments.containsKey(ARG_BUTTON_COLOR)) {
-            mButtonColor = arguments.getString(ARG_BUTTON_COLOR);
-            if (mButtonColor == null) {
-                mButtonColor = "";
-            }
-        } else {
-            mButtonColor = "";
+            mButtonColor = arguments.getInt(ARG_BUTTON_COLOR);
         }
 
         final AlertDialog alertDialog = builder.create();
@@ -159,10 +154,7 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
         input.setInputType(type);
 
         if (arguments.containsKey(ARG_HIGHLIGHT_COLOR)) {
-            String highlightColor = arguments.getString(ARG_HIGHLIGHT_COLOR);
-            if (highlightColor != null) {
-                input.setHighlightColor(highlightColor);
-            }
+            input.setHighlightColor(arguments.getInt(ARG_HIGHLIGHT_COLOR));
         }
 
         if (arguments.containsKey(ARG_DISABLE_FULL_SCREEN_UI)) {
@@ -184,19 +176,13 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
 
 
         if (arguments.containsKey(ARG_COLOR)) {
-            String color = arguments.getString(ARG_COLOR);
-            if (color != null) {
-                input.setTextColor(color);
-            }
+            input.setTextColor(arguments.getInt(ARG_COLOR));
         }
 
         if (arguments.containsKey(ARG_PLACEHOLDER)) {
             input.setHint(arguments.getString(ARG_PLACEHOLDER));
             if (arguments.containsKey(ARG_PLACEHOLDER_COLOR)) {
-                String placeholderColor = arguments.getString(ARG_PLACEHOLDER_COLOR);
-                if (placeholderColor != null) {
-                    input.setHintTextColor(arguments.getString(ARG_PLACEHOLDER_COLOR));
-                }
+                input.setHintTextColor(arguments.getInt(ARG_PLACEHOLDER_COLOR));
             }
         }
         alertDialog.setView(input, 50, 15, 50, 0);
@@ -236,7 +222,7 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
     public void onStart() {
         super.onStart();
 
-        if (mButtonColor != null && !mButtonColor.isEmpty()) {
+        if (mButtonColor != null) {
             AlertDialog d = (AlertDialog) getDialog();
             d.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(mButtonColor);
             d.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(mButtonColor);
