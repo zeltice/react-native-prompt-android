@@ -79,21 +79,48 @@ prompt(
 );
 ```
 
+### API
+
+#### `prompt`
+
+###### Android
+     static showPopupMenu(
+         title?: string,
+         message?: string,
+         positiveCallbackOrButtons: ()=>void | [ButtonPositive] | [ButtonNegative, ButtonPositive] | [ButtonNeutral, ButtonNegative, ButtonPositive],
+         options: {
+             disableFullscreenUI?: boolean,
+             cancelable?: boolean,
+             type?: 'default' | 'plain-text' | 'secure-text' | 'numeric' | 'email-address' | 'phone-pad',
+             defaultValue?: string,
+             style?: 'default' | 'shimo' | 'cust',
+             placeholder?: string,
+             placeholderColor?: string,
+             highlightColor?: string,
+             color?: string,
+             buttonColor?: string
+         }
+     ): void
+
+###### iOS
+
+TODO:
+
 ### Options
 The third argument is an object. It can have any of these keys:
 
-| Key                 | Description                                                                       | Type    | Default                                                             |
-|---------------------|-----------------------------------------------------------------------------------|---------|---------------------------------------------------------------------|
-| type                | Text input type: `'numeric', 'secure-text', 'phone-pad', 'email-address'`         | String  | 'default'                                                           |
-| cancelable          |                                                                                   | Boolean | true                                                                |
-| defaultValue        | Default input value                                                               | String  |                                                                     |
-| placeholder         |                                                                                   | String  |                                                                     |
-| style               | `'default', 'shimo', 'cust'`                                                      | String  | 'default'                                                           |
-| disableFullscreenUI | When in landscape mode, don't use fullscreen                                      | Boolean | false                                                               |
-| highlightColor      | Color of text selection                                                           | String  | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
-| placeholderColor    | Color of the placeholder                                                          | String  | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
-| color               | Color of the text                                                                 | String  | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
-| buttonColor         | Color of the buttons                                                              | String  | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
+| Key                 | Description                                                               | Type    | Default                                                             |
+|---------------------|---------------------------------------------------------------------------|---------|---------------------------------------------------------------------|
+| type                | Text input type: `'numeric', 'secure-text', 'phone-pad', 'email-address'` | string  | 'default'                                                           |
+| cancelable          | Android only. If tapping outside of the alert box should cause dismiss.   | boolean | true                                                                |
+| defaultValue        | Default input value                                                       | string  |                                                                     |
+| placeholder         | String in input that will be rendered when empty.                         | string  |                                                                     |
+| style               | `'default', 'shimo', 'cust'`                                              | string  | 'default'                                                           |
+| disableFullscreenUI | When in landscape mode, don't use fullscreen                              | boolean | false                                                               |
+| highlightColor      | Color of text selection                                                   | string  | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
+| placeholderColor    | Color of the placeholder in input field                                   | string  | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
+| color               | Color of the text in input field                                          | string  | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
+| buttonColor         | Color of the buttons                                                      | string  | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
 
 ##### "cust" Style (change underline, cursor, and handle color)
 If you set this style, you can adjust the color of the "underline", "cursor", and "handles" of the input field. The default custom color is a reddish color of "#F34336". You can change this by going to `./node_modules/react-native-prompt-android/android/src/main/res/values/colors.xml` and changing the value of the `custUnderlineAndCursorAndHandleColor` field.
