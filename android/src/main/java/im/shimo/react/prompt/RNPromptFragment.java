@@ -108,6 +108,9 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
 
         if (arguments.containsKey(ARG_BUTTON_COLOR)) {
             mButtonColor = arguments.getString(ARG_BUTTON_COLOR);
+            if (mButtonColor == null) {
+                mButtonColor = "";
+            }
         } else {
             mButtonColor = "";
         }
@@ -234,7 +237,7 @@ public class RNPromptFragment extends DialogFragment implements DialogInterface.
     public void onStart() {
         super.onStart();
 
-        if (!mButtonColor.isEmpty()) {
+        if (mButtonColor != null && !mButtonColor.isEmpty()) {
             AlertDialog d = (AlertDialog) getDialog();
             d.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(Color.parseColor(mButtonColor));
             d.getButton(AlertDialog.BUTTON_NEGATIVE).setTextColor(Color.parseColor(mButtonColor));
