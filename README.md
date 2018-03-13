@@ -46,7 +46,7 @@ import im.shimo.react.prompt.RNPromptPackage; // Add new import
 
 public class MainApplication extends Application implements ReactApplication {
   ...
-  
+
   @Override
   protected List<ReactPackage> getPackages() {
     return Arrays.<ReactPackage>asList(
@@ -89,7 +89,7 @@ The third argument is an object. It can have any of these keys:
 | defaultValue        | Default input value                                                               | String  |                                                      |
 | placeholder         |                                                                                   | String  |                                                      |
 | style               | `'default', 'shimo', 'cust'`                                                      | String  | 'default'                                            |
-| disableFullScreenUI | When in landscape mode, don't use fullscreen                                      | Boolean | false                                                |
+| disableFullscreenUI | When in landscape mode, don't use fullscreen                                      | Boolean | false                                                |
 | highlightColor      | Color of text selection                                                           | String  | ![colorString](#colorstring) or #RRGGBB or #AARRGGBB |
 | placeholderColor    | Color of the placeholder                                                          | String  | ![colorString](#colorstring) or #RRGGBB or #AARRGGBB |
 | color               | Color of the text                                                                 | String  | ![colorString](#colorstring) or #RRGGBB or #AARRGGBB |
