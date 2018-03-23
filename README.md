@@ -109,18 +109,20 @@ TODO:
 ### Options
 The third argument is an object. It can have any of these keys:
 
-| Key                 | Description                                                               | Type    | Default                                                             |
-|---------------------|---------------------------------------------------------------------------|---------|---------------------------------------------------------------------|
-| type                | Text input type: `'numeric', 'secure-text', 'phone-pad', 'email-address'` | string  | 'default'                                                           |
-| cancelable          | Android only. If tapping outside of the alert box should cause dismiss.   | boolean | true                                                                |
-| defaultValue        | Default input value                                                       | string  |                                                                     |
-| placeholder         | String in input that will be rendered when empty.                         | string  |                                                                     |
-| style               | `'default', 'shimo', 'cust'`                                              | string  | 'default'                                                           |
-| disableFullscreenUI | When in landscape mode, don't use fullscreen                              | boolean | false                                                               |
-| highlightColor      | Color of text selection                                                   | string  | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
-| placeholderColor    | Color of the placeholder in input field                                   | string  | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
-| color               | Color of the text in input field                                          | string  | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
-| buttonColor         | Color of the buttons                                                      | string  | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
+| Key                 | Description                                                               | Type                 | Default                                                             |
+|---------------------|---------------------------------------------------------------------------|----------------------|---------------------------------------------------------------------|
+| type                | Text input type: `'numeric', 'secure-text', 'phone-pad', 'email-address'` | string               | 'default'                                                           |
+| cancelable          | Android only. If tapping outside of the alert box should cause dismiss.   | boolean              | true                                                                |
+| defaultValue        | Default input value                                                       | string               |                                                                     |
+| placeholder         | String in input that will be rendered when empty.                         | string               |                                                                     |
+| style               | `'default', 'shimo', 'cust'`                                              | string               | 'default'                                                           |
+| disableFullscreenUI | When in landscape mode, don't use fullscreen                              | boolean              | false                                                               |
+| highlightColor      | Color of text selection                                                   | string               | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
+| placeholderColor    | Color of the placeholder in input field                                   | string               | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
+| color               | Color of the text in input field                                          | string               | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
+| buttonColor         | Color of the buttons                                                      | string               | ![Color](#https://facebook.github.io/react-native/docs/colors.html) |
+| onDismiss           | Callback triggered when prompt is dismissed                               | () => void           |                                                                     |
+| onAny               | Callback triggered when any action happens                                | PromptAction => void |                                                                     |
 
 ##### "cust" Style (change underline, cursor, and handle color)
 If you set this style, you can adjust the color of the "underline", "cursor", and "handles" of the input field. The default custom color is a reddish color of "#F34336". You can change this by going to `./node_modules/react-native-prompt-android/android/src/main/res/values/colors.xml` and changing the value of the `custUnderlineAndCursorAndHandleColor` field.
@@ -143,7 +145,16 @@ If you set this style, you can adjust the color of the "underline", "cursor", an
             color: '#212121',
             buttonColor: '#000000',
             defaultValue: memo,
-            style: 'cust'
+            style: 'cust',
+            onDismiss: () => console.log('prompt was dismissed')
+            onAny: action => {
+                switch(action) {
+                    case prompt.dismissedAction: return console.log('onAny says dismissed');
+                    case prompt.positiveAction: return console.log('onAny says positive button clicked');
+                    case prompt.negativeAction: return console.log('onAny says negative button clicked');
+                    case prompt.neutralAction: return console.log('onAny says neutral button clicked');
+                }
+            }
         }
     )
 

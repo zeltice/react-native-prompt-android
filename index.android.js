@@ -3,7 +3,6 @@ import processColor from 'react-native/Libraries/StyleSheet/processColor';
 
 const PromptAndroid = NativeModules.PromptAndroid;
 
-
 export type PromptType = $Enum<{
     /**
      * Default alert with no inputs
@@ -46,6 +45,12 @@ export type PromptStyle = $Enum<{
     'cust': string
 }>;
 
+export type PromptAction =
+  | 'dismissedAction'
+  | 'positiveAction'
+  | 'negativeAction'
+  | 'neutralAction';
+
 type Options = {
     disableFullscreenUI?: boolean;
     cancelable?: boolean;
@@ -57,6 +62,8 @@ type Options = {
     highlightColor?: string;
     color?: string;
     buttonColor?: string;
+    onAny?: PromptAction => void,
+    onDismiss: () => void
 };
 
 /**
@@ -76,6 +83,10 @@ type ButtonsArray = Array<{
     onPress?: () => void,
 }>;
 
+prompt.dismissedAction = 'dismissedAction';
+prompt.positiveAction = 'positiveAction';
+prompt.negativeAction = 'negativeAction';
+prompt.neutralAction = 'neutralAction';
 export default function prompt(
     title: ?string,
     message?: ?string,
@@ -139,15 +150,36 @@ export default function prompt(
     PromptAndroid.promptWithArgs(
         config,
         (action, buttonKey, input) => {
-            if (action !== PromptAndroid.buttonClicked) {
-                return;
+            if (action === PromptAndroid.dismissed) {
+                options.onDismiss && options.onDismiss();
+            } else if (action === PromptAndroid.buttonClicked) {
+                switch (buttonKey) {
+                    case PromptAndroid.buttonNeutral:
+                            buttonNeutral.onPress && buttonNeutral.onPress(input);
+                        break;
+                    case PromptAndroid.buttonNegative:
+                            buttonNegative.onPress && buttonNegative.onPress();
+                        break;
+                    case PromptAndroid.buttonPositive:
+                            buttonPositive.onPress && buttonPositive.onPress(input);
+                        break;
+                    // no default
+                }
             }
-            if (buttonKey === PromptAndroid.buttonNeutral) {
-                buttonNeutral.onPress && buttonNeutral.onPress(input);
-            } else if (buttonKey === PromptAndroid.buttonNegative) {
-                buttonNegative.onPress && buttonNegative.onPress();
-            } else if (buttonKey === PromptAndroid.buttonPositive) {
-                buttonPositive.onPress && buttonPositive.onPress(input);
+
+            if (options.onAny) {
+                let actionText;
+                if (action === PromptAndroid.buttonClicked) {
+                    switch (buttonKey) {
+                        case PromptAndroid.buttonNeutral: actionText = prompt.neutralAction; break;
+                        case PromptAndroid.buttonPositive: actionText = prompt.positiveAction; break;
+                        case PromptAndroid.buttonNegative: actionText = prompt.negativeAction; break;
+                    }
+                } else if (action === PromptAndroid.dismissed) {
+                    actionText = prompt.dismissedAction;
+                }
+
+                options.onAny(actionText);
             }
         }
     );
