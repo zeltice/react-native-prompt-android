@@ -141,7 +141,7 @@ If you set this style, you can adjust the color of the "underline", "cursor", an
             { text:'OK', onPress: text => dispatch(patchEvent(id, { memo:text })) },
         ],
         {
-            highlightColor: '#80F34336',
+            highlightColor: 'rgba(243, 67, 54, 0.5)',
             color: '#212121',
             buttonColor: '#000000',
             defaultValue: memo,
